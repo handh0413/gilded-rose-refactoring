@@ -9,6 +9,7 @@ public class GildedRoseTest {
 	private static final String NONAME = "noname";
 	private static final String SULFURAS = "Sulfuras, Hand of Ragnaros";
 	private static final String AGED_BRIE = "Aged Brie";
+	private static final String BACKSTAGE_PASSE = "Backstage passes to a TAFKAL80ETC concert";
 
 	@Test
 	public void noname_sellin_0_quality_0() {
@@ -68,6 +69,36 @@ public class GildedRoseTest {
 		// 3. assert
 		assertEquals(-1, items[0].sellIn);
 		assertEquals(2, items[0].quality);
+	}
+
+	// Backatage는 판매 가능 날짜가 지나면 품질이 0이된다.
+	@Test
+	public void backstage_sellin_0_quality_0() {
+		// 1. assign
+		Item[] items = new Item[] { new Item(BACKSTAGE_PASSE, 0, 0) };
+		GildedRose gildedRose = new GildedRose(items);
+
+		// 2. action
+		gildedRose.updateQuality();
+
+		// 3. assert
+		assertEquals(-1, items[0].sellIn);
+		assertEquals(0, items[0].quality);
+	}
+
+	// Backatage는 판매 가능 날짜가 지나면 품질이 0이된다_2.
+	@Test
+	public void backstage_sellin_0_quality_49() {
+		// 1. assign
+		Item[] items = new Item[] { new Item(BACKSTAGE_PASSE, 0, 49) };
+		GildedRose gildedRose = new GildedRose(items);
+
+		// 2. action
+		gildedRose.updateQuality();
+
+		// 3. assert
+		assertEquals(-1, items[0].sellIn);
+		assertEquals(0, items[0].quality);
 	}
 
 }
