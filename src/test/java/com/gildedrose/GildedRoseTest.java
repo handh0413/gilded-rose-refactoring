@@ -101,4 +101,49 @@ public class GildedRoseTest {
 		assertEquals(0, items[0].quality);
 	}
 
+	// Backstage는 판매 가능 일수가 줄어들수록 품질이 증가한다.
+	@Test
+	public void backstage_sellin_12_quality_0() {
+		// 1. assign
+		Item[] items = new Item[] { new Item(BACKSTAGE_PASSE, 12, 0) };
+		GildedRose gildedRose = new GildedRose(items);
+
+		// 2. action
+		gildedRose.updateQuality();
+
+		// 3. assert
+		assertEquals(11, items[0].sellIn);
+		assertEquals(1, items[0].quality);
+	}
+
+	// Sulfuras는 전설의 아이템이다. 절대 팔지도 않고 품질이 떨어지지도 않는다.(판매 가능 날짜도 감소하지 않는다.)
+	@Test
+	public void sulfuras_sellin_m2_quality_1() {
+		// 1. assign
+		Item[] items = new Item[] { new Item(SULFURAS, -2, 1) };
+		GildedRose gildedRose = new GildedRose(items);
+
+		// 2. action
+		gildedRose.updateQuality();
+
+		// 3. assert
+		assertEquals(-2, items[0].sellIn);
+		assertEquals(1, items[0].quality);
+	}
+
+	// Aged Brie는 시간이 지날수록 품질이 증가한다. (품질은 50을 초과되면 증가하지 않는다)
+	@Test
+	public void agedBrie_sellin_0_quality_51() {
+		// 1. assign
+		Item[] items = new Item[] { new Item(AGED_BRIE, 0, 51) };
+		GildedRose gildedRose = new GildedRose(items);
+
+		// 2. action
+		gildedRose.updateQuality();
+
+		// 3. assert
+		assertEquals(-1, items[0].sellIn);
+		assertEquals(51, items[0].quality);
+	}
+
 }
