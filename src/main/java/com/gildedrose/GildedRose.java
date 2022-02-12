@@ -20,6 +20,12 @@ class GildedRose {
 
     private void updateQuality(Item item) {
         GildedRoseItem gildedRoseItem;
+        gildedRoseItem = getGildedRoseItem(item);
+        gildedRoseItem.updateQuality(item);
+    }
+
+    private GildedRoseItem getGildedRoseItem(Item item) {
+        GildedRoseItem gildedRoseItem;
         if (item.name.equals(AGED_BRIE)) {
             gildedRoseItem = new AgedBrieItem(item);
         } else if (item.name.equals(BACKSTAGE_PASS)) {
@@ -29,7 +35,7 @@ class GildedRose {
         } else {
             gildedRoseItem = new NormalItem(item);
         }
-        gildedRoseItem.updateQuality(item);
+        return gildedRoseItem;
     }
 
     private void updateSellIn(Item item) {
