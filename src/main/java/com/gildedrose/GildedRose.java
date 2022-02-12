@@ -19,8 +19,7 @@ class GildedRose {
     }
 
     private void updateQuality(Item item) {
-        GildedRoseItem gildedRoseItem;
-        gildedRoseItem = getGildedRoseItem(item);
+        GildedRoseItem gildedRoseItem = getGildedRoseItem(item);
         gildedRoseItem.updateQuality(item);
     }
 
