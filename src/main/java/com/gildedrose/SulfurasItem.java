@@ -7,7 +7,7 @@ public class SulfurasItem {
         this.item = item;
     }
 
-    void updateQualityForSulfuras(Item item) {
+    void updateQuality(Item item) {
 
     }
 }

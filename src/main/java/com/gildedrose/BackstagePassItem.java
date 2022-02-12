@@ -7,7 +7,7 @@ public class BackstagePassItem {
         this.item = item;
     }
 
-    void updateQualityForBackstagePasses(Item item) {
+    void updateQuality(Item item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
 

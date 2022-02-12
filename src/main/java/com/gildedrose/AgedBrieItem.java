@@ -7,7 +7,7 @@ public class AgedBrieItem {
         this.item = item;
     }
 
-    void updateQualityForAgedBrie(Item item) {
+    void updateQuality(Item item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1;
         }
