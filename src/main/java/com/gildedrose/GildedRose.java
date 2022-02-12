@@ -59,11 +59,11 @@ class GildedRose {
                         item.quality = item.quality - item.quality;
                     }
                 } else {
-                    if (item.sellIn < 0) {
-                        if (item.quality > 0) {
-                            if (item.name.equals(SULFURAS)) {
+                    if (item.name.equals(SULFURAS)) {
 
-                            } else {
+                    } else {
+                        if (item.sellIn < 0) {
+                            if (item.quality > 0) {
                                 item.quality = item.quality - 1;
                             }
                         }
